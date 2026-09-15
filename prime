@@ -1,0 +1,29 @@
+import math
+
+def print_primes_up_to_n(n):
+    print(f"Prime numbers from 1 to {n} are:")
+    
+    # 1 is not a prime number, so we start the loop from 2
+    for num in range(2, n + 1):
+        is_prime = True
+        
+        # Check for factors from 2 up to the square root of num
+        for i in range(2, int(math.sqrt(num)) + 1):
+            if num % i == 0:
+                is_prime = False
+                break  # Exit inner loop early if a factor is found
+                
+        # If no factors were found, the number is prime
+        if is_prime:
+            print(num, end=" ")
+    print()  # For a new line at the end
+
+# Take input from the user
+try:
+    limit = int(input("Enter the value of n: "))
+    if limit < 2:
+        print("There are no prime numbers in this range.")
+    else:
+        print_primes_up_to_n(limit)
+except ValueError:
+    print("Please enter a valid integer.")
